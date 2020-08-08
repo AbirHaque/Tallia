@@ -33,7 +33,7 @@ Tallia is an **extremely** young project, so any contributions you make are grea
 Distributed under the GNU General Public License v3.0. See 'LICENSE' for more information.
 
 # Contact
-Abir Haque - Android Developer
+Abir Haque - Lead Developer
 - Email: abir.haque.usa@gmail.com
 - GitHub: https://github.com/AbirHaque
 
