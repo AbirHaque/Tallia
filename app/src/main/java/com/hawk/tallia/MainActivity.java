@@ -18,6 +18,7 @@ import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 import java.text.SimpleDateFormat;
@@ -116,12 +117,44 @@ public class MainActivity extends Activity {
             DataPoint[] data = new DataPoint[dates.size()];
             for (int i = 0; i < dates.size(); i++)
             {
-                int x = dateToInt(dates.get(i));
+                Date x = new Date();
+                try
+                {
+                    x = new SimpleDateFormat("MM-dd-yyyy").parse((dates.get(i)));//dateToInt(dates.get(i));
+                }
+                catch (Exception e)
+                {
+                    ;
+                }
                 int y = Integer.parseInt(ratings.get(i));
                 data[i] = new DataPoint(x,y);
             }
             LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(data);
             graph.addSeries(series);
+
+            graph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getApplicationContext()));
+            graph.getGridLabelRenderer().setNumHorizontalLabels(3);
+
+            Date minx = new Date();
+            Date maxx = new Date();
+
+            try
+            {
+                minx = new SimpleDateFormat("MM-dd-yyyy").parse((dates.get(0)));
+                maxx = new SimpleDateFormat("MM-dd-yyyy").parse((dates.get(dates.size()-1)));
+            }
+            catch (Exception e)
+            {
+                ;
+            }
+
+            graph.getViewport().setMinX(minx.getTime());
+            graph.getViewport().setMaxX(maxx.getTime());
+            graph.getViewport().setMinY(1);
+            graph.getViewport().setMaxY(5);
+            graph.getViewport().setXAxisBoundsManual(true);
+
+            graph.getGridLabelRenderer().setHumanRounding(false);
         }
         else
         {
