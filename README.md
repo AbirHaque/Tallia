@@ -21,6 +21,7 @@ Implement the following:
 # Release History
 1.0:
 - Core features implemented
+
 1.1.1:
 - Graph domains and ranges set
 - UI elements spaced out
