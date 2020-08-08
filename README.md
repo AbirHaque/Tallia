@@ -21,6 +21,9 @@ Implement the following:
 # Release History
 1.0:
 - Core features implemented
+1.1.1:
+- Graph domains and ranges set
+- UI elements spaced out
 
 # Contributing
 Tallia is an **extremely** young project, so any contributions you make are greatly appreciated!
