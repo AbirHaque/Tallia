@@ -5,11 +5,14 @@
  */
 package com.hawk.tallia;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -18,6 +21,10 @@ import android.widget.Switch;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.core.app.ActivityCompat;
+
+import static android.content.ContentValues.TAG;
 
 public class DisplayProfile extends Activity {
 
@@ -163,6 +170,7 @@ public class DisplayProfile extends Activity {
             catch(Exception e)
             {
                 guardianr4.setVisibility(View.VISIBLE);
+                checkForSmsPermission();
             }
         }
         else
@@ -191,5 +199,19 @@ public class DisplayProfile extends Activity {
         }
         guardian_name.setText(guardian_name_text);
         guardian_number.setText(guardian_number_text);
+    }
+    private void checkForSmsPermission()
+    {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) !=  PackageManager.PERMISSION_GRANTED)
+        {
+            Log.d(TAG, "Messaging pemission not yet granted.");
+            // Permission not yet granted. Use requestPermissions().
+            // MY_PERMISSIONS_REQUEST_SEND_SMS is an
+            // app-defined int constant. The callback method gets the
+            // result of the request.
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.SEND_SMS},
+                    1);
+        }
     }
 }

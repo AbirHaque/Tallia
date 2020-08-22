@@ -142,7 +142,7 @@
                     android:id="@+id/prompt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Please enter a number." />
+                    android:text="Failed to send test message." />
 
             </TableRow>
         </TableLayout>
