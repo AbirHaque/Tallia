@@ -19,6 +19,10 @@ Implement the following:
 - Additional features pending
 
 # Release History
+1.2.1:
+- Added messaging permission prompt
+- Fixed issue with icon not showing
+
 1.1.1:
 - Graph domains and ranges set
 - UI elements spaced out
